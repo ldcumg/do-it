@@ -11,3 +11,8 @@ export const API_ENDPOINTS = {
   todoDetail: (itemId: number) => `${API_BASE_URL}/items/${itemId}`,
   image: `${API_BASE_URL}/images/upload`,
 } as const;
+
+/** 단위 : 밀리초 */
+export const ONE_MINUTE_FOR_TANSTACK = 1000 * 60;
+export const ONE_HOUR_FOR_TANSTACK = 60 * ONE_MINUTE_FOR_TANSTACK;
+export const ONE_DAY_FOR_TANSTACK = 24 * ONE_HOUR_FOR_TANSTACK;

@@ -1,7 +1,6 @@
-import { getTodoDetailApi } from '@/src/apis';
-import DetailBody from '@/src/components/detail/DetailBody';
 import DetailButtons from '@/src/components/detail/DetailButtons';
-import TodoDetailCheckbox from '@/src/components/detail/TodoDetailCheckbox';
+import { use } from 'react';
+import DetailBody from '@/src/components/detail/DetailBody';
 
 interface DetailPageProps {
   params: Promise<{
@@ -9,17 +8,14 @@ interface DetailPageProps {
   }>;
 }
 
-const DetailPage = async ({ params }: DetailPageProps) => {
-  const todoId = Number((await params).todoId);
-  const todoData = await getTodoDetailApi(todoId);
-  console.log('[ ㏒ ] todoData =>', todoData);
+const DetailPage = ({ params }: DetailPageProps) => {
+  const todoId = Number(use(params).todoId);
 
   return (
-    <div>
-      <TodoDetailCheckbox {...todoData} />
-      <DetailBody todoData={todoData} />
+    <section>
+      <DetailBody todoId={todoId} />
       <DetailButtons todoId={todoId} />
-    </div>
+    </section>
   );
 };
 

@@ -1,26 +1,29 @@
 'use client';
 
 import { useState } from 'react';
-import { addTodoApi } from '../../apis';
+import { useAddTodoMutation } from '@/src/hooks/tanstack';
 
 const InputForm = () => {
-  const [inputValue, setInputValue] = useState('');
+  const [todoInputValue, setTodoInputValue] = useState('');
+  const { mutate: addTodoMutate } = useAddTodoMutation();
 
-  const addTodo = async (
-    e: React.SubmitEvent<HTMLFormElement>,
-    newTodo: string,
-  ) => {
+  const addTodo = (e: React.SubmitEvent<HTMLFormElement>) => {
     e.preventDefault();
-    await addTodoApi(newTodo);
+    if (!todoInputValue) {
+      alert('할 일을 입력해주세요');
+      return;
+    }
+    addTodoMutate(todoInputValue);
+    setTodoInputValue('');
   };
 
   return (
-    <form className='flex' onSubmit={(e) => addTodo(e, inputValue)}>
+    <form className='flex' onSubmit={(e) => addTodo(e)}>
       <div>
         {/* <img src='/svgs/input.svg' alt='input' /> */}
         <input
-          onChange={(e) => setInputValue(e.target.value)}
-          value={inputValue}
+          onChange={(e) => setTodoInputValue(e.target.value)}
+          value={todoInputValue}
           type='text'
           placeholder='할 일을 입력해주세요'
         />

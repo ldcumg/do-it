@@ -1,14 +1,16 @@
 'use client';
 
+import { useHandleComplete } from '@/src/hooks/tanstack';
 import type { TodoType } from '../../types';
-import { patchTodoDetailApi } from '../../apis';
 
 const TodoDetailCheckbox = ({ id, name, isCompleted }: TodoType) => {
-  const handleCompleteTodo = async () =>
-    patchTodoDetailApi(id, { isCompleted: !isCompleted });
-
+  const handleComplete = useHandleComplete(id);
+  
   return (
-    <button className='cursor-pointer' onClick={handleCompleteTodo}>
+    <button
+      className='cursor-pointer'
+      onClick={() => handleComplete(isCompleted)}
+    >
       {isCompleted ? (
         <img src='/svgs/check_circle.svg' alt='check circle' />
       ) : (

@@ -1,10 +1,17 @@
-import { getTodoListApi } from '../../apis';
+'use client';
+
+import { useGetTodoListQuery } from '@/src/hooks/tanstack';
 import type { TodoType } from '../../types';
 import TodoCheckbox from './TodoCheckbox';
 
-const TodoListSection = async () => {
-  const todoList = await getTodoListApi();
+const TodoListSection = () => {
+  const { data: todoList, isPending, isError, error } = useGetTodoListQuery();
   console.log('[ ㏒ ] todoList =>', todoList);
+
+  if (isPending) return <section>할 일 목록을 불러오는 중입니다.</section>;
+
+  if (isError) throw new Error(error.message);
+
   const { incompletedTodos, completedTodos } = todoList.reduce<{
     incompletedTodos: TodoType[];
     completedTodos: TodoType[];
