@@ -11,3 +11,6 @@ export const API_ENDPOINTS = {
   todoDetail: (itemId: number) => `${API_BASE_URL}/items/${itemId}`,
   image: `${API_BASE_URL}/images/upload`,
 } as const;
+
+/** 최대 사진 크기 5MB */
+export const IMAGE_MAX_SIZE = 5 * 1024 * 1024;

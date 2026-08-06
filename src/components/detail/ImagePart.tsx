@@ -1,3 +1,5 @@
+import { IMAGE_MAX_SIZE } from '@/src/constants';
+import { koreanRegex } from '@/src/regex';
 import type { TodoType } from '@/src/types';
 import React, { useEffect, useState } from 'react';
 
@@ -47,7 +49,21 @@ const ImagePart = ({ todoData, imageInput, setImageInput }: ImagePartProps) => {
       />
       <span>
         <input
-          onChange={(e) => setImageInput(e.target.files?.[0] || null)}
+          onChange={(e) => {
+            if (e.target.files?.[0].size || 0 > IMAGE_MAX_SIZE) {
+              alert('파일은 5MB 이하만 업로드 가능합니다.');
+
+              return;
+            }
+
+            if (koreanRegex.test(e.target.files?.[0]?.name || '')) {
+              alert('한글 파일명은 업로드할 수 없습니다.');
+              return;
+            }
+
+            console.log('[ ㏒ ] e.target.files =>', e.target.files?.[0]);
+            setImageInput(e.target.files?.[0] || null);
+          }}
           id='image-edit'
           type='file'
           className='hidden'
