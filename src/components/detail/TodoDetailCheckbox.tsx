@@ -1,7 +1,7 @@
 'use client';
 
-import type { TodoType } from '../types';
-import { patchTodoDetailApi } from '../apis';
+import type { TodoType } from '../../types';
+import { patchTodoDetailApi } from '../../apis';
 
 const TodoDetailCheckbox = ({ id, name, isCompleted }: TodoType) => {
   const handleCompleteTodo = async () =>

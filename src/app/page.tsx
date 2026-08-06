@@ -1,5 +1,5 @@
-import TodoListSection from '../components/TodoListSection';
-import InputForm from '../components/InputForm';
+import TodoListSection from '../components/home/TodoListSection';
+import InputForm from '../components/home/InputForm';
 
 const HomePage = () => {
   return (

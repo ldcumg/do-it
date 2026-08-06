@@ -6,7 +6,6 @@ export const addTodoApi = async (newTodo: string) => {
   await fetch(API_ENDPOINTS.todos, {
     method: 'POST',
     headers: COMMON_HEADERS,
-    cache: 'no-store',
     body: JSON.stringify({
       name: newTodo,
     }),
@@ -23,12 +22,12 @@ export const getTodoListApi = async (): Promise<TodoType[]> => {
   return await response.json();
 };
 
-/** 할 일 상세정보 불러오기 api - force-cache */
+/** 할 일 상세정보 불러오기 api */
 export const getTodoDetailApi = async (todoId: number): Promise<TodoType> => {
   const response = await fetch(API_ENDPOINTS.todoDetail(todoId), {
     method: 'GET',
     headers: COMMON_HEADERS,
-    cache: 'force-cache',
+    cache: 'no-store',
   });
   return await response.json();
 };
@@ -41,7 +40,14 @@ export const patchTodoDetailApi = async (
   await fetch(API_ENDPOINTS.todoDetail(todoId), {
     method: 'PATCH',
     headers: COMMON_HEADERS,
-    cache: 'no-store',
     body: JSON.stringify(updateTodoData),
+  });
+};
+
+/** 할 일 삭제 api */
+export const deleteTodoApi = async (todoId: number) => {
+  await fetch(API_ENDPOINTS.todoDetail(todoId), {
+    method: 'DELETE',
+    headers: COMMON_HEADERS,
   });
 };

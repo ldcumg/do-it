@@ -1,7 +1,7 @@
 'use client';
 
 import { useState } from 'react';
-import { addTodoApi } from '../apis';
+import { addTodoApi } from '../../apis';
 
 const InputForm = () => {
   const [inputValue, setInputValue] = useState('');
