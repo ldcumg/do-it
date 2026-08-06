@@ -2,28 +2,41 @@
 
 import TodoDetailCheckbox from './TodoDetailCheckbox';
 import Supplement from './Supplement';
-import { useGetTodoDetailQuery } from '@/src/hooks/tanstack';
+import type { TodoType } from '@/src/types';
 
 interface DetailBodyProps {
-  todoId: number;
+  todoData: TodoType;
+  titleInput: string | null;
+  setTitleInput: React.Dispatch<React.SetStateAction<string | null>>;
+  imageInput: File | null;
+  setImageInput: React.Dispatch<React.SetStateAction<File | null>>;
+  memoInput: string | null;
+  setMemoInput: React.Dispatch<React.SetStateAction<string | null>>;
 }
 
-const DetailBody = ({todoId}: DetailBodyProps) => {
-  const {
-    data: todoData,
-    isPending,
-    isError,
-    error,
-  } = useGetTodoDetailQuery(todoId);
-  console.log('[ ㏒ ] todoData =>', todoData);
-
-  if (isPending) return <section>할 일 정보를 불러오는 중입니다.</section>;
-
-  if (isError) throw new Error(error.message);
+const DetailBody = ({
+  todoData,
+  titleInput,
+  setTitleInput,
+  imageInput,
+  setImageInput,
+  memoInput,
+  setMemoInput,
+}: DetailBodyProps) => {
   return (
     <>
-      <TodoDetailCheckbox {...todoData} />
-      <Supplement todoData={todoData} />
+      <TodoDetailCheckbox
+        {...todoData}
+        titleInput={titleInput}
+        setTitleInput={setTitleInput}
+      />
+      <Supplement
+        todoData={todoData}
+        imageInput={imageInput}
+        setImageInput={setImageInput}
+        memoInput={memoInput}
+        setMemoInput={setMemoInput}
+      />
     </>
   );
 };
