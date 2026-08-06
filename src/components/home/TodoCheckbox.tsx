@@ -1,8 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import type { TodoType } from '../types';
-import { patchTodoDetailApi } from '../apis';
+import type { TodoType } from '../../types';
+import { patchTodoDetailApi } from '../../apis';
 
 const TodoCheckbox = ({ id, name, isCompleted }: TodoType) => {
   //TODO - tanstack query 적용

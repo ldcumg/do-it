@@ -1,5 +1,5 @@
-import { getTodoListApi } from '../apis';
-import type { TodoType } from '../types';
+import { getTodoListApi } from '../../apis';
+import type { TodoType } from '../../types';
 import TodoCheckbox from './TodoCheckbox';
 
 const TodoListSection = async () => {
