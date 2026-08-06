@@ -4,7 +4,7 @@ import Link from 'next/link';
 import type { TodoType } from '../types';
 import { patchTodoDetailApi } from '../apis';
 
-const TodoItem = ({ id, name, isCompleted }: TodoType) => {
+const TodoCheckbox = ({ id, name, isCompleted }: TodoType) => {
   //TODO - tanstack query 적용
   const handleCompleteTodo = async () =>
     patchTodoDetailApi(id, { isCompleted: !isCompleted });
@@ -25,4 +25,4 @@ const TodoItem = ({ id, name, isCompleted }: TodoType) => {
   );
 };
 
-export default TodoItem;
+export default TodoCheckbox;
