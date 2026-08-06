@@ -1,6 +1,6 @@
 import { getTodoListApi } from '../apis';
 import type { TodoType } from '../types';
-import TodoItem from './TodoItem';
+import TodoCheckbox from './TodoCheckbox';
 
 const TodoListSection = async () => {
   const todoList = await getTodoListApi();
@@ -27,7 +27,7 @@ const TodoListSection = async () => {
           {incompletedTodos.length === 0
             ? 'empty'
             : incompletedTodos.map((incompletedTodo) => (
-                <TodoItem key={incompletedTodo.id} {...incompletedTodo} />
+                <TodoCheckbox key={incompletedTodo.id} {...incompletedTodo} />
               ))}
         </ul>
       </div>
@@ -36,7 +36,7 @@ const TodoListSection = async () => {
         {completedTodos.length === 0
           ? 'empty'
           : completedTodos.map((completedTodos) => (
-              <TodoItem key={completedTodos.id} {...completedTodos} />
+              <TodoCheckbox key={completedTodos.id} {...completedTodos} />
             ))}
       </ul>
     </section>
