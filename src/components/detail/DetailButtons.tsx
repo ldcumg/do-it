@@ -50,6 +50,7 @@ const DetailButtons = ({
       memo,
       imageUrl,
     });
+    router.push('/');
   };
 
   return (
