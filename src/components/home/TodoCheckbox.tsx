@@ -9,14 +9,11 @@ const TodoCheckbox = ({ id, name, isCompleted }: TodoType) => {
 
   return (
     <li>
-      <button
-        className='cursor-pointer'
-        onClick={() => handleComplete(isCompleted)}
-      >
+      <button onClick={() => handleComplete(isCompleted)}>
         {isCompleted ? (
-          <img src='/svgs/check_circle.svg' alt='check circle' />
+          <img src='/icons/check_circle.svg' alt='check circle' />
         ) : (
-          <img src='/svgs/uncheck_circle.svg' alt='uncheck circle' />
+          <img src='/icons/uncheck_circle.svg' alt='uncheck circle' />
         )}
       </button>
       <Link href={`/${id}`}>

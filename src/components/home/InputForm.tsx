@@ -20,7 +20,7 @@ const InputForm = () => {
   return (
     <form className='flex' onSubmit={(e) => addTodo(e)}>
       <div>
-        {/* <img src='/svgs/input.svg' alt='input' /> */}
+        {/* <img src='/icons/input.svg' alt='input' /> */}
         <input
           onChange={(e) => setTodoInputValue(e.target.value)}
           value={todoInputValue}
@@ -30,7 +30,7 @@ const InputForm = () => {
       </div>
 
       <button>
-        <img src='/svgs/add_button_inactive_l.svg' alt='add_button' />
+        <img src='/icons/add_button_inactive_l.svg' alt='add_button' />
       </button>
     </form>
   );

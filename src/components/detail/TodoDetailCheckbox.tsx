@@ -3,20 +3,34 @@
 import { useHandleComplete } from '@/src/hooks/tanstack';
 import type { TodoType } from '../../types';
 
-const TodoDetailCheckbox = ({ id, name, isCompleted }: TodoType) => {
+interface TodoDetailCheckboxProps extends TodoType {
+  titleInput: string | null;
+  setTitleInput: React.Dispatch<React.SetStateAction<string | null>>;
+}
+
+const TodoDetailCheckbox = ({
+  id,
+  name,
+  isCompleted,
+  titleInput,
+  setTitleInput,
+}: TodoDetailCheckboxProps) => {
   const handleComplete = useHandleComplete(id);
-  
+
   return (
-    <button
-      className='cursor-pointer'
-      onClick={() => handleComplete(isCompleted)}
-    >
-      {isCompleted ? (
-        <img src='/svgs/check_circle.svg' alt='check circle' />
-      ) : (
-        <img src='/svgs/uncheck_circle.svg' alt='uncheck circle' />
-      )}
-      <h1 className={`${isCompleted ? 'line-through' : ''}`}>{name}</h1>
+    <button onClick={() => handleComplete(isCompleted)}>
+      <img
+        src={
+          isCompleted ? '/icons/check_circle.svg' : '/icons/uncheck_circle.svg'
+        }
+        alt='check circle'
+      />
+      <input
+        className={`${isCompleted ? 'line-through' : ''}`}
+        type='text'
+        value={titleInput ?? name}
+        onChange={(e) => setTitleInput(e.target.value)}
+      />
     </button>
   );
 };

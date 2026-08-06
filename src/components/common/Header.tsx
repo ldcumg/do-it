@@ -4,7 +4,7 @@ const Header = () => {
   return (
     <div>
       <Link href='/'>
-        <img src='/svgs/logo_l.svg' alt='logo' />
+        <img src='/images/logo_l.svg' alt='logo' />
       </Link>
     </div>
   );

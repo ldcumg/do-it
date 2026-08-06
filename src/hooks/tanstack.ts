@@ -4,7 +4,7 @@ import {
   deleteTodoApi,
   getTodoDetailApi,
   getTodoListApi,
-  patchTodoDetailApi,
+  patchTodoApi,
 } from '../apis';
 import QUERY_KEYS from './queryKeys';
 import type { TodoType } from '../types';
@@ -39,10 +39,10 @@ export const useAddTodoMutation = () => {
 };
 
 /** 할 일 삭제 뮤테이트 */
-export const useDeleteTodoMutation = () => {
+export const useDeleteTodoMutation = (todoId: number) => {
   const queryClient = useQueryClient();
   return useMutation({
-    mutationFn: (todoId: number) => deleteTodoApi(todoId),
+    mutationFn: () => deleteTodoApi(todoId),
     onSuccess: async () =>
       await queryClient.invalidateQueries({
         queryKey: QUERY_KEYS.todoList,
@@ -51,11 +51,11 @@ export const useDeleteTodoMutation = () => {
 };
 
 /** 할 일 수정 뮤테이트 */
-export const usePatchTodoDetailMutation = (todoId: number) => {
+export const usePatchTodoMutation = (todoId: number) => {
   const queryClient = useQueryClient();
   return useMutation({
     mutationFn: (updateTodoData: Partial<TodoType>) =>
-      patchTodoDetailApi(todoId, updateTodoData),
+      patchTodoApi(todoId, updateTodoData),
     onSuccess: async () => {
       await Promise.all([
         queryClient.invalidateQueries({
@@ -71,7 +71,7 @@ export const usePatchTodoDetailMutation = (todoId: number) => {
 
 /** 할 일 완료 상태 변경 커스텀 훅 */
 export const useHandleComplete = (id: number) => {
-  const { mutate: patchTodoDetailMutate } = usePatchTodoDetailMutation(id);
+  const { mutate: patchTodoDetailMutate } = usePatchTodoMutation(id);
   return (isCompleted: boolean) =>
     patchTodoDetailMutate({ isCompleted: !isCompleted });
 };

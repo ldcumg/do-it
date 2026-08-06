@@ -41,7 +41,7 @@ export const deleteTodoApi = async (todoId: number) => {
 };
 
 /** 할 일 수정 api */
-export const patchTodoDetailApi = async (
+export const patchTodoApi = async (
   todoId: number,
   updateTodoData: Partial<TodoType>,
 ) => {
@@ -50,4 +50,17 @@ export const patchTodoDetailApi = async (
     headers: COMMON_HEADERS,
     body: JSON.stringify(updateTodoData),
   });
+};
+
+/** 사진 업로드 api */
+export const uploadImageApi = async (image: File) => {
+  const formData = new FormData();
+  formData.append('image', image);
+
+  const response = await fetch(API_ENDPOINTS.image, {
+    method: 'POST',
+    body: formData,
+  });
+
+  return (await response.json()).url;
 };

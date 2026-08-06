@@ -29,7 +29,7 @@ const TodoListSection = () => {
   return (
     <section>
       <div>
-        <img src='/svgs/todo_label.svg' alt='todo label' />
+        <img src='/images/todo_label.svg' alt='todo label' />
         <ul>
           {incompletedTodos.length === 0
             ? 'empty'
@@ -39,7 +39,7 @@ const TodoListSection = () => {
         </ul>
       </div>
       <ul>
-        <img src='/svgs/done_label.svg' alt='done label' />
+        <img src='/images/done_label.svg' alt='done label' />
         {completedTodos.length === 0
           ? 'empty'
           : completedTodos.map((completedTodos) => (
