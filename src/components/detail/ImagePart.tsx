@@ -50,19 +50,21 @@ const ImagePart = ({ todoData, imageInput, setImageInput }: ImagePartProps) => {
       <span>
         <input
           onChange={(e) => {
-            if (e.target.files?.[0].size || 0 > IMAGE_MAX_SIZE) {
+            const file = e.target.files?.[0];
+            if (!file) return;
+
+            if (file.size > IMAGE_MAX_SIZE) {
               alert('파일은 5MB 이하만 업로드 가능합니다.');
 
               return;
             }
 
-            if (koreanRegex.test(e.target.files?.[0]?.name || '')) {
+            if (koreanRegex.test(file.name || '')) {
               alert('한글 파일명은 업로드할 수 없습니다.');
               return;
             }
 
-            console.log('[ ㏒ ] e.target.files =>', e.target.files?.[0]);
-            setImageInput(e.target.files?.[0] || null);
+            setImageInput(file);
           }}
           id='image-edit'
           type='file'
