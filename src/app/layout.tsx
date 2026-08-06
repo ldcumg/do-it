@@ -2,6 +2,7 @@ import type { Metadata } from 'next';
 import '../globals.css';
 import Header from '../components/common/Header';
 import localFont from 'next/font/local';
+import QueryProvider from '../QueryProvider';
 
 const nanumSquare = localFont({
   src: [
@@ -29,8 +30,10 @@ const RootLayout = ({
   return (
     <html lang='ko' className={`${nanumSquare.className} h-full antialiased`}>
       <body className='min-h-full flex flex-col'>
-        <Header />
-        {children}
+        <QueryProvider>
+          <Header />
+          {children}
+        </QueryProvider>
       </body>
     </html>
   );

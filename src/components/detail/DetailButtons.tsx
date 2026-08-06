@@ -1,6 +1,6 @@
 'use client';
 
-import { deleteTodoApi } from '@/src/apis';
+import { useDeleteTodoMutation } from '@/src/hooks/tanstack';
 import { useRouter } from 'next/navigation';
 
 interface DetailButtonsProps {
@@ -9,10 +9,11 @@ interface DetailButtonsProps {
 
 const DetailButtons = ({ todoId }: DetailButtonsProps) => {
   const router = useRouter();
+  const { mutate: deleteTodoMutate } = useDeleteTodoMutation();
 
-  const handleDeleteTodo = async () => {
+  const handleDeleteTodo = () => {
     if (confirm('정말 삭제하시겠습니까?')) {
-      await deleteTodoApi(todoId);
+      deleteTodoMutate(todoId);
       router.replace('/');
       return;
     }
