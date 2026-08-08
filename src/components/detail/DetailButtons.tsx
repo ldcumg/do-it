@@ -54,7 +54,7 @@ const DetailButtons = ({
   };
 
   return (
-    <div>
+    <div className='flex flex-row items-center justify-center lg:justify-end gap-[7px] sm:gap-[16px] mt-[24px]'>
       <button onClick={handleUpdateTodo} disabled={!isUpdated}>
         <img
           src={

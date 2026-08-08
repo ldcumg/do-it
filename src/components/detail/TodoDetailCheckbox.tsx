@@ -18,20 +18,28 @@ const TodoDetailCheckbox = ({
   const handleComplete = useHandleComplete(id);
 
   return (
-    <button onClick={() => handleComplete(isCompleted)}>
-      <img
-        src={
-          isCompleted ? '/icons/check_circle.svg' : '/icons/uncheck_circle.svg'
-        }
-        alt='check circle'
-      />
+    <label
+      className={`${isCompleted ? 'bg-violet-200' : 'bg-white'} h-[64px] flex gap-[16px] items-center justify-center border-2 rounded-[24px] cursor-pointer p-[16px] mb-[17px] sm:mb-[24px] mt-[16px] sm:mt-[24px]`}
+      htmlFor='todo-input'
+    >
+      <button onClick={() => handleComplete(isCompleted)}>
+        <img
+          src={
+            isCompleted
+              ? '/icons/check_circle.svg'
+              : '/icons/uncheck_circle.svg'
+          }
+          alt='check circle'
+        />
+      </button>
       <input
-        className={`${isCompleted ? 'line-through' : ''}`}
+        id='todo-input'
+        className='underline text-slate-900 font-bold text-[20px] w-[100px]'
         type='text'
         value={titleInput ?? name}
         onChange={(e) => setTitleInput(e.target.value)}
       />
-    </button>
+    </label>
   );
 };
 

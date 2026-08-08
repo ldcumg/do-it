@@ -1,6 +1,7 @@
 @import "tailwindcss";
 
-:root {
+@theme {
+  /* 색상 지정 */
   --color-slate-900: #0F172A;
   --color-slate-800: #1E293B;
   --color-slate-500: #64748B;
@@ -16,9 +17,14 @@
   --color-lime-300: #BEF264;
 
   --color-amber-800: #92400E;
+
+  /* 텍스트 크기 지정 */
+  --text-20: 20px;
+  --text-18: 18px;
+  --text-16: 16px;
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
+input,
+textarea {
+  outline: none;
 }
