@@ -18,19 +18,26 @@ const InputForm = () => {
   };
 
   return (
-    <form className='flex' onSubmit={(e) => addTodo(e)}>
-      <div>
-        {/* <img src='/icons/input.svg' alt='input' /> */}
-        <input
-          onChange={(e) => setTodoInputValue(e.target.value)}
-          value={todoInputValue}
-          type='text'
-          placeholder='할 일을 입력해주세요'
-        />
-      </div>
+    <form
+      className='flex w-full h-[56px] justify-between gap-[8px] sm:gap-[16px]'
+      onSubmit={(e) => addTodo(e)}
+    >
+      <input
+        className='bg-[url("/images/input.svg")] w-full h-full bg-no-repeat'
+        onChange={(e) => setTodoInputValue(e.target.value)}
+        value={todoInputValue}
+        type='text'
+        placeholder='할 일을 입력해주세요'
+      />
 
-      <button>
-        <img src='/icons/add_button_inactive_l.svg' alt='add_button' />
+      <button type='submit'>
+        <picture>
+          <source
+            media='(min-width: 768px)'
+            srcSet='/icons/add_button_inactive_l.svg'
+          />
+          <img src='/icons/add_button_inactive_s.svg' alt='add_button' />
+        </picture>
       </button>
     </form>
   );

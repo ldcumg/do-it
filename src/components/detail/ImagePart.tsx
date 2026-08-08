@@ -38,8 +38,9 @@ const ImagePart = ({ todoData, imageInput, setImageInput }: ImagePartProps) => {
   }, [todoData.imageUrl]);
 
   return (
-    <span>
+    <span className='lg:max-w-[384px] w-full h-[311px] border-2 border-dashed border-slate-300 bg-slate-50 rounded-[24px] relative'>
       <img
+        className='absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2'
         src={
           imageInput
             ? URL.createObjectURL(imageInput)
@@ -47,7 +48,7 @@ const ImagePart = ({ todoData, imageInput, setImageInput }: ImagePartProps) => {
         }
         alt='todo image'
       />
-      <span>
+      <span className='absolute right-[16px] bottom-[16px]'>
         <input
           onChange={(e) => {
             const file = e.target.files?.[0];

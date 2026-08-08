@@ -32,7 +32,9 @@ const RootLayout = ({
       <body className='min-h-full flex flex-col'>
         <QueryProvider>
           <Header />
-          {children}
+          <div className='text-slate-800 px-[16px] sm:px-[24px] lg:px-[360px]'>
+            {children}
+          </div>
         </QueryProvider>
       </body>
     </html>

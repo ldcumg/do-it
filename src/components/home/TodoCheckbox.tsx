@@ -8,8 +8,10 @@ const TodoCheckbox = ({ id, name, isCompleted }: TodoType) => {
   const handleComplete = useHandleComplete(id);
 
   return (
-    <li>
-      <button onClick={() => handleComplete(isCompleted)}>
+    <li
+      className={`border-2 rounded-[27px] flex items-center h-[48px] w-full px-[12px] py-[9px] ${isCompleted ? 'bg-violet-100' : 'bg-white'}`}
+    >
+      <button className='mr-[16px]' onClick={() => handleComplete(isCompleted)}>
         {isCompleted ? (
           <img src='/icons/check_circle.svg' alt='check circle' />
         ) : (

@@ -20,7 +20,7 @@ const Supplement = ({
   setMemoInput,
 }: SupplementProps) => {
   return (
-    <div className='flex'>
+    <div className='flex flex-col lg:flex-row gap-[15px] sm:gap-[24px]'>
       <ImagePart
         todoData={todoData}
         imageInput={imageInput}
