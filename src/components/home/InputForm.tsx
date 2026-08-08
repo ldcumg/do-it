@@ -34,9 +34,20 @@ const InputForm = () => {
         <picture>
           <source
             media='(min-width: 768px)'
-            srcSet='/icons/add_button_inactive_l.svg'
+            srcSet={
+              todoInputValue
+                ? '/icons/add_button_active_l.svg'
+                : '/icons/add_button_inactive_l.svg'
+            }
           />
-          <img src='/icons/add_button_inactive_s.svg' alt='add_button' />
+          <img
+            src={
+              todoInputValue
+                ? '/icons/add_button_active_s.svg'
+                : '/icons/add_button_inactive_s.svg'
+            }
+            alt='add_button'
+          />
         </picture>
       </button>
     </form>
