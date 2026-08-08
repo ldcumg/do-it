@@ -23,7 +23,7 @@ const InputForm = () => {
       onSubmit={(e) => addTodo(e)}
     >
       <input
-        className='bg-[url("/images/input.svg")] w-full h-full bg-no-repeat'
+        className='w-full h-[56px] bg-[url("/images/input.svg")] bg-[length:100%_56px] bg-no-repeat bg-center pl-[24px]'
         onChange={(e) => setTodoInputValue(e.target.value)}
         value={todoInputValue}
         type='text'
