@@ -6,7 +6,6 @@ import TodoCheckbox from './TodoCheckbox';
 
 const TodoListSection = () => {
   const { data: todoList, isPending, isError, error } = useGetTodoListQuery();
-  console.log('[ ㏒ ] todoList =>', todoList);
 
   if (isPending) return <section>할 일 목록을 불러오는 중입니다.</section>;
 
