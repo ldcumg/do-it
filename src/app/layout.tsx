@@ -1,16 +1,20 @@
 import type { Metadata } from 'next';
-import { Geist, Geist_Mono } from 'next/font/google';
 import '../globals.css';
-import Header from '../components/layout/Header';
+import Header from '../components/common/Header';
+import localFont from 'next/font/local';
+import QueryProvider from '../components/QueryProvider';
 
-const geistSans = Geist({
-  variable: '--font-geist-sans',
-  subsets: ['latin'],
-});
-
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
-  subsets: ['latin'],
+const nanumSquare = localFont({
+  src: [
+    {
+      path: '../fonts/NanumSquareR.ttf',
+      weight: '400',
+    },
+    {
+      path: '../fonts/NanumSquareB.ttf',
+      weight: '700',
+    },
+  ],
 });
 
 export const metadata: Metadata = {
@@ -24,13 +28,14 @@ const RootLayout = ({
   children: React.ReactNode;
 }>) => {
   return (
-    <html
-      lang='ko'
-      className={`${geistSans.variable} ${geistMono.variable} h-full antialiased`}
-    >
+    <html lang='ko' className={`${nanumSquare.className} h-full antialiased`}>
       <body className='min-h-full flex flex-col'>
-        <Header />
-        {children}
+        <QueryProvider>
+          <Header />
+          <div className='text-slate-800 px-[16px] sm:px-[24px] lg:px-[360px]'>
+            {children}
+          </div>
+        </QueryProvider>
       </body>
     </html>
   );
