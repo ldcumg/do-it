@@ -13,7 +13,7 @@ interface DetailPageProps {
 
 const DetailPage = ({ params }: DetailPageProps) => {
   const todoId = Number(use(params).todoId);
-  const [titleInput, setTitleInput] = useState<string|null>(null);
+  const [titleInput, setTitleInput] = useState<string | null>(null);
   const [imageInput, setImageInput] = useState<File | null>(null);
   const [memoInput, setMemoInput] = useState<string | null>(null);
 
@@ -23,7 +23,6 @@ const DetailPage = ({ params }: DetailPageProps) => {
     isError,
     error,
   } = useGetTodoDetailQuery(todoId);
-  console.log('[ ㏒ ] todoData =>', todoData);
 
   if (isPending) return <section>할 일 정보를 불러오는 중입니다.</section>;
 
